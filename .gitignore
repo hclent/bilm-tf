@@ -6,4 +6,10 @@ build/
 *.pyc
 *.swp
 
-
+.ipynb_checkpoints/
+	
+#Ignore all Mimic-related files
+mimic.db
+mimic_data.txt
+mimic_test.txt
+mimic_vocab.txt
