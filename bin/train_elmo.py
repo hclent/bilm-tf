@@ -9,14 +9,14 @@ from bilm.data import BidirectionalLMDataset
 
 def main(args):
     # load the vocab
-    vocab = load_vocab(args.vocab_file, 50)
+    vocab = load_vocab(args.vocab_file, 50) #50 is max word length
 
     # define the options
-    batch_size = 128  # batch size for each GPU
-    n_gpus = 3
+    batch_size = 200 #TODO: batch size for each GPU.
+    n_gpus = 1 #TODO: how many gpus do you  have?
 
-    # number of tokens in training data (this for 1B Word Benchmark)
-    n_train_tokens = 768648884
+    # number of tokens in training data 
+    n_train_tokens = 198782 #TODO: update this number to be the total number of tokens in your training data
 
     options = {
      'bidirectional': True,
@@ -46,8 +46,8 @@ def main(args):
     
      'all_clip_norm_val': 10.0,
     
-     'n_epochs': 10,
-     'n_train_tokens': n_train_tokens,
+     'n_epochs': 10, #TODO: update this to how many epochs you want to run
+     'n_train_tokens': n_train_tokens, 
      'batch_size': batch_size,
      'n_tokens_vocab': vocab.size,
      'unroll_steps': 20,
@@ -70,5 +70,6 @@ if __name__ == '__main__':
     parser.add_argument('--train_prefix', help='Prefix for train files')
 
     args = parser.parse_args()
+    print("**** ARGS:  ", args)
     main(args)
 
